@@ -26,9 +26,28 @@ namespace Finite
         virtual bool addTransition(const State& destState,
                                    char symbol) = 0;
 
+        const std::string& getName() = 0;
+
     protected:
+        bool isAccept_;
+        bool isStart_;
+
         std::unordered_map<char, State&> transitions_;
     }; // class State
+
+
+    // Unary operator for determining if a state matches another in name
+    class MatchesStateName
+    {
+    public:
+        MatchesStateName(const std::string& stateName);
+
+        bool operator() (const State const * inputState);
+
+    private:
+        const std::string& stateName_;
+
+    }; // class MatchesStateName
 
 
     class Automaton
