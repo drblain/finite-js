@@ -5,26 +5,39 @@
 #ifndef DETERMINISTIC_AUTOMATON_H
 #define DETERMINISTIC_AUTOMATON_H
 
+#include "Automaton.h"
+
 namespace Finite
 {
+
+    // specialization of the state class for deterministic states
+    class DeterministicState : public State
+    {
+    public:
+        bool addTransition(const State * destState,
+                           char symbol);
+    };
 
     class DeterministicAutomaton : public Automaton
     {
 
         ~DeterministicAutomaton();
 
-        // accepts
+        bool accepts(std::string& inputString) const;
 
-        // addState
+        bool addState(const std::string& stateName,
+                      bool isStart,
+                      bool isAccept);
 
-        // removeState
+        bool removeState(const std::string& stateName);
 
-        // addTransition
         bool addTransition(const std::string& initStateName,
                            const std::string& destStateName,
                            char symbol);
 
-        // removeTransition
+        bool removeTransition(const std::string& initStateName,
+                              const std::string& destStateName,
+                              char symbol);
 
     }; // class DeterministicAutomaton
 

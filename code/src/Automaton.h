@@ -9,30 +9,49 @@
 #ifndef AUTOMATON_H
 #define AUTOMATON_H
 
+// STL includes
 #include <string>
 #include <unordered_set>
 #include <unordered_map>
+
+// Project Includes
+#include "State.h"
+
+// TODO : add documentation comments
 
 namespace Finite
 {
     // define the epsilon character
     const char EPS = -1;
 
+    // class defining a generic automaton state
     class State
     {
     public:
+        State(const std::string& stateName
+              bool isStart = false,
+              bool isAccept = false);
+
+        virtual ~State();
+
         // for a deterministic state, this should return false if
         // destState is already in the map, or if symbol is eps
-        virtual bool addTransition(const State& destState,
+        virtual bool addTransition(const State * destState,
                                    char symbol) = 0;
 
-        const std::string& getName() = 0;
+        const std::string& getName();
+
+        bool isStart() const;
+
+        bool isAccept() const;
 
     protected:
         bool isAccept_;
         bool isStart_;
 
-        std::unordered_map<char, State&> transitions_;
+        std::string stateName_;
+
+        std::unordered_map<char, const State *> transitions_;
     }; // class State
 
 
@@ -42,7 +61,7 @@ namespace Finite
     public:
         MatchesStateName(const std::string& stateName);
 
-        bool operator() (const State const * inputState);
+        bool operator() (const State const * inputState) const;
 
     private:
         const std::string& stateName_;
@@ -50,6 +69,17 @@ namespace Finite
     }; // class MatchesStateName
 
 
+    // Unary operator to determine if a state is a start state
+    class IsStartState
+    {
+    public:
+        IsStartState();
+
+        bool operator () (const State const * inputState) const;
+    }; // class IsStartState
+
+
+    // Class defining a generic automaton
     class Automaton
     {
     public:
@@ -57,7 +87,9 @@ namespace Finite
 
         virtual bool accepts(const std::string& inputString) const = 0;
 
-        virtual bool addState(const std::string& stateName) = 0;
+        virtual bool addState(const std::string& stateName, 
+                              bool isStart = false,
+                              bool isAccept = false) = 0;
 
         virtual bool removeState(const std::string& stateName) = 0;
 
@@ -71,6 +103,8 @@ namespace Finite
                                       char symbol) = 0;
 
     protected:
+        bool findState(const std::string& stateName, State& outputState);
+
         std::unordered_set<char> alphabet_;
 
         std::unordered_set<State *> states_;
