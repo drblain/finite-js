@@ -14,9 +14,6 @@
 #include <unordered_set>
 #include <unordered_map>
 
-// Project Includes
-#include "State.h"
-
 // TODO : add documentation comments
 
 namespace Finite
@@ -28,7 +25,7 @@ namespace Finite
     class State
     {
     public:
-        State(const std::string& stateName
+        State(const std::string& stateName,
               bool isStart = false,
               bool isAccept = false);
 
@@ -39,7 +36,7 @@ namespace Finite
         virtual bool addTransition(const State * destState,
                                    char symbol) = 0;
 
-        const std::string& getName();
+        const std::string& getName() const;
 
         bool isStart() const;
 
@@ -61,7 +58,7 @@ namespace Finite
     public:
         MatchesStateName(const std::string& stateName);
 
-        bool operator() (const State const * inputState) const;
+        bool operator() (const State * inputState) const;
 
     private:
         const std::string& stateName_;
@@ -75,7 +72,7 @@ namespace Finite
     public:
         IsStartState();
 
-        bool operator () (const State const * inputState) const;
+        bool operator () (const State * inputState) const;
     }; // class IsStartState
 
 
@@ -103,7 +100,7 @@ namespace Finite
                                       char symbol) = 0;
 
     protected:
-        bool findState(const std::string& stateName, State& outputState);
+        bool findState(const std::string& stateName, State * & outputState);
 
         std::unordered_set<char> alphabet_;
 

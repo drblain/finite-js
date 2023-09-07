@@ -14,6 +14,12 @@ namespace Finite
     class DeterministicState : public State
     {
     public:
+        DeterministicState(const std::string& stateName,
+                           bool isStart,
+                           bool isAccept);
+
+        ~DeterministicState();
+        
         bool addTransition(const State * destState,
                            char symbol);
     };
@@ -23,7 +29,7 @@ namespace Finite
 
         ~DeterministicAutomaton();
 
-        bool accepts(std::string& inputString) const;
+        bool accepts(const std::string& inputString) const;
 
         bool addState(const std::string& stateName,
                       bool isStart,

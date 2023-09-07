@@ -1,0 +1,1 @@
+add_executable(main Automaton.cpp DeterministicAutomaton.cpp NonDeterministicAutomaton.cpp main.cpp)

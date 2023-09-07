@@ -9,6 +9,17 @@
 //  class DeterministicState
 //
 // ***************************************************
+Finite::DeterministicState::DeterministicState(const std::string& stateName,
+                                               bool isStart,
+                                               bool isAccept):
+State(stateName, isStart, isAccept)
+{
+}
+
+Finite::DeterministicState::~DeterministicState()
+{
+}
+
 bool Finite::DeterministicState::addTransition(const State * destState,
                                                char symbol)
 {
@@ -38,6 +49,7 @@ Finite::DeterministicAutomaton::~DeterministicAutomaton()
 bool Finite::DeterministicAutomaton::accepts(const std::string& inputString) const
 {
     // TODO : implement major algorithm
+    return false;
 }
 
 // addState
@@ -71,10 +83,14 @@ bool Finite::DeterministicAutomaton::addState(const std::string& stateName,
     return stateAdded;
 }
 
-// removestate
+bool Finite::DeterministicAutomaton::removeState(const std::string& stateName)
+{
+    // TODO : implement
+    return false;
+}
 
-bool Finite::DeterministicAutomaton::addTransition(const std::string& initStringName,
-                                                   const std::string& destStringName,
+bool Finite::DeterministicAutomaton::addTransition(const std::string& initStateName,
+                                                   const std::string& destStateName,
                                                    char symbol)
 {
     bool transitionAdded(false);
@@ -88,10 +104,17 @@ bool Finite::DeterministicAutomaton::addTransition(const std::string& initString
         findState(initStateName, initState) &&
         findState(destStateName, destState))
     {
-        transitionAdded = initState->addTransition()
+        transitionAdded = initState->addTransition(destState, symbol);
     }
 
     return transitionAdded;
 }
 
-// removeTransition
+bool Finite::DeterministicAutomaton::removeTransition(const std::string& initStateName,
+                                                      const std::string& destStateName,
+                                                      char symbol)
+{
+    // TODO : implement
+    // we shouldn't have to use the destStateName here since this is deterministic
+    return false;
+}
