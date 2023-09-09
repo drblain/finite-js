@@ -99,9 +99,9 @@ namespace Finite
                                       const std::string& destStateName,
                                       char symbol) = 0;
 
-    protected:
         bool findState(const std::string& stateName, State * & outputState);
 
+    protected:
         std::unordered_set<char> alphabet_;
 
         std::unordered_set<State *> states_;

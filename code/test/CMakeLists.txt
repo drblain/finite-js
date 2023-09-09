@@ -1,8 +1,10 @@
 enable_testing()
 
-add_executable(runAllUnitTests DeterministicAutomatonTest.cpp NonDeterministicAutomatonTest.cpp)
+include_directories(${FINITE_SOURCE_DIR}/src)
 
-target_link_libraries(runAllUnitTests GTest::gtest_main)
+add_executable(Test DeterministicAutomatonTest.cpp NonDeterministicAutomatonTest.cpp)
+
+target_link_libraries(Test Finite GTest::gtest_main)
 
 include(GoogleTest)
-gtest_discover_tests(runAllUnitTests)
+gtest_discover_tests(Test)

@@ -17,6 +17,7 @@ namespace Finite
 
     class NonDeterministicAutomaton : public Automaton
     {
+    public:
         NonDeterministicAutomaton();
         
         ~NonDeterministicAutomaton();
@@ -24,8 +25,8 @@ namespace Finite
         bool accepts(std::string& inputString) const;
 
         bool addState(const std::string& stateName,
-                      bool isStart,
-                      bool isAccept);
+                      bool isStart = false,
+                      bool isAccept = false);
 
         bool removeState(const std::string& stateName);
 

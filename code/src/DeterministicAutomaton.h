@@ -26,6 +26,7 @@ namespace Finite
 
     class DeterministicAutomaton : public Automaton
     {
+    public:
         DeterministicAutomaton();
 
         ~DeterministicAutomaton();
@@ -33,8 +34,8 @@ namespace Finite
         bool accepts(const std::string& inputString) const;
 
         bool addState(const std::string& stateName,
-                      bool isStart,
-                      bool isAccept);
+                      bool isStart = false,
+                      bool isAccept = false);
 
         bool removeState(const std::string& stateName);
 
