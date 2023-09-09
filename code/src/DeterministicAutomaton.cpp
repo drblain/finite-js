@@ -41,6 +41,10 @@ bool Finite::DeterministicState::addTransition(const State * destState,
 //
 // ***************************************************
 
+Finite::DeterministicAutomaton::DeterministicAutomaton()
+{
+}
+
 Finite::DeterministicAutomaton::~DeterministicAutomaton()
 {
 }
@@ -64,7 +68,7 @@ bool Finite::DeterministicAutomaton::addState(const std::string& stateName,
     {
         // since this is a deterministic automaton,
         // make sure we only have one start state
-        if (!isAccept || 
+        if (!isStart || 
             std::find_if(states_.begin(), states_.end(), IsStartState()) == states_.end())
         {
             // add the deterministic state

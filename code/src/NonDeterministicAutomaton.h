@@ -17,6 +17,8 @@ namespace Finite
 
     class NonDeterministicAutomaton : public Automaton
     {
+        NonDeterministicAutomaton();
+        
         ~NonDeterministicAutomaton();
         
         bool accepts(std::string& inputString) const;

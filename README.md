@@ -2,4 +2,5 @@
 
 ## TODO
 
-Add google test
+Finish google test
+Figure out how to include src from test

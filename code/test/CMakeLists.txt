@@ -1,6 +1,6 @@
 enable_testing()
 
-add_executable(runAllUnitTests DeterministicAutomatonTest.cpp)
+add_executable(runAllUnitTests DeterministicAutomatonTest.cpp NonDeterministicAutomatonTest.cpp)
 
 target_link_libraries(runAllUnitTests GTest::gtest_main)
 

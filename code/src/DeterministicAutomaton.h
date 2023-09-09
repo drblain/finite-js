@@ -26,6 +26,7 @@ namespace Finite
 
     class DeterministicAutomaton : public Automaton
     {
+        DeterministicAutomaton();
 
         ~DeterministicAutomaton();
 

@@ -1,36 +1,66 @@
 // test includes
 #include <gtest/gtest.h>
 
+#include "DeterministicAutomaton.h"
+
 #include "DeterministicAutomatonTest.h"
 
 void DeterministicAutomatonTest::SetUp()
 {
-
+    automaton_ = new Finite::DeterministicAutomaton();
 }
 
 void DeterministicAutomatonTest::TearDown()
 {
-
+    delete automaton_;
 }
 
 TEST_F(DeterministicAutomatonTest, AddStateNominal)
 {
-    EXPECT_TRUE(true);
+    const std::string stateName0("state0");
+    Finite::State * stateOutput(0);
+
+    EXPECT_TRUE(automaton_->addState(stateName0));
+    EXPECT_TRUE(automaton_->findState(stateName0, stateOutput));
+    ASSERT_TRUE(stateOutput != 0);
+    EXPECT_FALSE(stateOutput->isStart());
+    EXPECT_FALSE(stateOutput->isAccept());
+
+    const std::string stateName1("state1");
+    stateOutput = 0;
+
+    EXPECT_TRUE(automaton_->addState(stateName1, true, true));
+    EXPECT_TRUE(automaton_->findState(stateName1, stateOutput));
+    ASSERT_TRUE(stateOutput != 0);
+    EXPECT_TRUE(stateOutput->isStart());
+    EXPECT_TRUE(stateOutput->isAccept());
+
+    stateOuput = 0;
+
+    EXPECT_TRUE(automaton_->findState(stateName0));
+    ASSERT_TRUE(stateOuput != 0);
 }
 
 TEST_F(DeterministicAutomatonTest, AddStateExistingState)
 {
+    const std::string stateName("state0");
 
-}
-
-TEST_F(DeterministicAutomatonTest, AddStateExistingAccept)
-{
-
+    EXPECT_TRUE(automaton_->addState(stateName));
+    EXPECT_FALSE(automaton_->addState(stateName));
 }
 
 TEST_F(DeterministicAutomatonTest, AddStateExistingStart)
 {
+    const std::string stateName0("state0");
 
+    EXPECT_TRUE(automaton_->addState(stateName0, true));
+
+    const std::string stateName1("state1");
+    Finite::State * stateOutput(0);
+
+    EXPECT_FALSE(automaton_->addState(stateName1, true));
+    EXPECT_FALSE(automaton_->findState(stateName1, stateOutput));
+    EXPECT_EQ(stateOutput, 0);
 }
 
 TEST_F(DeterministicAutomatonTest, AddTransitionNominal)
