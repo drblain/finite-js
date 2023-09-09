@@ -1,8 +1,6 @@
 // test includes
 #include <gtest/gtest.h>
 
-#include <iostream>
-
 #include "DeterministicAutomaton.h"
 
 #include "DeterministicAutomatonTest.h"
