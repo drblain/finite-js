@@ -9,6 +9,12 @@ namespace Finite
     class NonDeterministicState : public State
     {
     public:
+        NonDeterministicState(const std::string& stateName,
+                              bool isStart,
+                              bool isAccept);
+
+        ~NonDeterministicState();
+        
         bool addTransition(const State * destState,
                            char symbol);
 
@@ -22,7 +28,7 @@ namespace Finite
         
         ~NonDeterministicAutomaton();
         
-        bool accepts(std::string& inputString) const;
+        bool accepts(const std::string& inputString) const;
 
         bool addState(const std::string& stateName,
                       bool isStart = false,

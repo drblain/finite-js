@@ -65,26 +65,26 @@ TEST_F(DeterministicAutomatonTest, AddStateExistingStart)
 
 TEST_F(DeterministicAutomatonTest, AddTransitionNominal)
 {
-
+    EXPECT_TRUE(false);
 }
 
 TEST_F(DeterministicAutomatonTest, AddTransitionNoInitState)
 {
-
+    EXPECT_TRUE(false);
 }
 
 TEST_F(DeterministicAutomatonTest, AddTransitionNoDestState)
 {
-
+    EXPECT_TRUE(false);
 }
 
 TEST_F(DeterministicAutomatonTest, AddTransitionInvalidSymbol)
 {
-
+    EXPECT_TRUE(false);
 }
 
 TEST_F(DeterministicAutomatonTest, AddTransitionExistingSymbol)
 {
-
+    EXPECT_TRUE(false);
 }
 
