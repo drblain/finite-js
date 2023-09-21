@@ -65,6 +65,13 @@ TEST_F(DeterministicAutomatonTest, AddStateExistingStart)
 
 TEST_F(DeterministicAutomatonTest, RemoveStateNominal)
 {
+    // Add multiple states to the automaton
+    // Add transitions between each state
+    // Remove a state
+    // Verify that the state is removed (return true)
+    // Verify that we can't find the state
+    // Verify that no other state has a transition to a state by the removed name
+
     EXPECT_TRUE(false);
 }
 

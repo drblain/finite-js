@@ -89,8 +89,22 @@ bool Finite::DeterministicAutomaton::addState(const std::string& stateName,
 
 bool Finite::DeterministicAutomaton::removeState(const std::string& stateName)
 {
-    // TODO : implement
-    return false;
+    bool stateRemoved(false);
+    
+    auto stateIter = std::find_if(states_.begin(), states_.end(), MatchesStateName(stateName));
+    
+    if (stateIter != states_.end())
+    {
+        // TODO : find all the transitions to this state
+        // remove them from the other states in the automaton
+        // might require a change in implementation
+
+        states_.erase(stateIter);
+
+        stateRemoved = true;
+    }
+
+    return stateRemoved;
 }
 
 bool Finite::DeterministicAutomaton::addTransition(const std::string& initStateName,

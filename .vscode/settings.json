@@ -64,7 +64,11 @@
         "streambuf": "cpp",
         "thread": "cpp",
         "typeinfo": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "any": "cpp",
+        "forward_list": "cpp",
+        "fstream": "cpp",
+        "iomanip": "cpp"
     },
     "cmake.sourceDirectory": "/mnt/c/dev/finite-js/.yarn/unplugged/react-native-virtual-79380373c4/node_modules/react-native/ReactAndroid/src/main/jni/first-party/fb",
     "C_Cpp.default.compilerPath": "/usr/bin/g++-11"
