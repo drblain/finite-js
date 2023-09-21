@@ -63,6 +63,16 @@ TEST_F(DeterministicAutomatonTest, AddStateExistingStart)
     EXPECT_TRUE(stateOutput == nullptr);
 }
 
+TEST_F(DeterministicAutomatonTest, RemoveStateNominal)
+{
+    EXPECT_TRUE(false);
+}
+
+TEST_F(DeterministicAutomatonTest, RemoveStateNoState)
+{
+    EXPECT_TRUE(false);
+}
+
 TEST_F(DeterministicAutomatonTest, AddTransitionNominal)
 {
     EXPECT_TRUE(false);
@@ -84,6 +94,31 @@ TEST_F(DeterministicAutomatonTest, AddTransitionInvalidSymbol)
 }
 
 TEST_F(DeterministicAutomatonTest, AddTransitionExistingSymbol)
+{
+    EXPECT_TRUE(false);
+}
+
+TEST_F(DeterministicAutomatonTest, RemoveTransitionNominal)
+{
+    EXPECT_TRUE(false);
+}
+
+TEST_F(DeterministicAutomatonTest, RemoveTransitionNoState)
+{
+    EXPECT_TRUE(false);
+}
+
+TEST_F(DeterministicAutomatonTest, RemoveTransitionNoSymbol)
+{
+    EXPECT_TRUE(false);
+}
+
+TEST_F(DeterministicAutomatonTest, AcceptsNominalAccept)
+{
+    EXPECT_TRUE(false);
+}
+
+TEST_F(DeterministicAutomatonTest, AcceptsNominalReject)
 {
     EXPECT_TRUE(false);
 }
