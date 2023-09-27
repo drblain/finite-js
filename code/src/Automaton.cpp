@@ -35,22 +35,6 @@ bool Finite::State::isAccept() const
     return isAccept_;
 }
 
-// ***************************************************
-//
-//  class MatchesStateName
-//
-// ***************************************************
-
-Finite::MatchesStateName::MatchesStateName(const std::string& stateName):
-    stateName_(stateName)
-{
-}
-
-bool Finite::MatchesStateName::operator () (const State * inputState) const
-{
-    return inputState->getName() == stateName_;
-}
-
 
 // ***************************************************
 //
@@ -61,9 +45,9 @@ Finite::IsStartState::IsStartState()
 {
 }
 
-bool Finite::IsStartState::operator () (const State * inputState) const
+bool Finite::IsStartState::operator () (const StatePair& inputStateElement) const
 {
-    return inputState->isStart();
+    return inputStateElement.second->isStart();
 }
 
 
@@ -75,19 +59,22 @@ bool Finite::IsStartState::operator () (const State * inputState) const
 
 Finite::Automaton::~Automaton()
 {
-    std::for_each(states_.begin(), states_.end(), [](State * inputState) { delete inputState; });
+    std::for_each(
+        states_.begin(),
+        states_.end(),
+        [](StatePair& inputStateElement) { delete inputStateElement.second; });
 }
 
 bool Finite::Automaton::findState(const std::string& stateName, State * & outputState)
 {
     bool elementFound(false);
 
-    auto stateIter(std::find_if(states_.begin(), states_.end(), MatchesStateName(stateName)));
+    auto stateIter(states_.find(stateName));
 
     if (stateIter != states_.end())
     {
         elementFound = true;
-        outputState = *stateIter;
+        outputState = stateIter->second;
     }
 
     return elementFound;

@@ -11,8 +11,9 @@
 
 // STL includes
 #include <string>
-#include <unordered_set>
 #include <unordered_map>
+#include <unordered_set>
+#include <utility>
 
 // TODO : add documentation comments
 
@@ -49,22 +50,11 @@ namespace Finite
         std::string stateName_;
 
         std::unordered_map<char, const State *> transitions_;
+
+        // TODO : add a std::set<std::string> here to indicate the incoming transitions
     }; // class State
 
-
-    // Unary operator for determining if a state matches another in name
-    class MatchesStateName
-    {
-    public:
-        MatchesStateName(const std::string& stateName);
-
-        bool operator() (const State * inputState) const;
-
-    private:
-        const std::string& stateName_;
-
-    }; // class MatchesStateName
-
+    typedef std::pair<const std::string, State *> StatePair;
 
     // Unary operator to determine if a state is a start state
     class IsStartState
@@ -72,7 +62,7 @@ namespace Finite
     public:
         IsStartState();
 
-        bool operator () (const State * inputState) const;
+        bool operator () (const StatePair& inputStateElement) const;
     }; // class IsStartState
 
 
@@ -104,7 +94,7 @@ namespace Finite
     protected:
         std::unordered_set<char> alphabet_;
 
-        std::unordered_set<State *> states_;
+        std::unordered_map<std::string, State *> states_;
 
     }; // class Automaton
 

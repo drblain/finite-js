@@ -64,7 +64,7 @@ bool Finite::DeterministicAutomaton::addState(const std::string& stateName,
     bool stateAdded(false);
     
     // don't add the state if it already exists
-    if (std::find_if(states_.begin(), states_.end(), MatchesStateName(stateName)) == states_.end())
+    if (states_.find(stateName) == states_.end())
     {
         // since this is a deterministic automaton,
         // make sure we only have one start state
@@ -72,13 +72,11 @@ bool Finite::DeterministicAutomaton::addState(const std::string& stateName,
             std::find_if(states_.begin(), states_.end(), IsStartState()) == states_.end())
         {
             // add the deterministic state
-            State * newState(
+            states_[stateName] = 
                 new DeterministicState(
                     stateName,
                     isStart,
-                    isAccept));
-
-            states_.insert(newState);
+                    isAccept);
 
             stateAdded = true;
         }
@@ -91,7 +89,7 @@ bool Finite::DeterministicAutomaton::removeState(const std::string& stateName)
 {
     bool stateRemoved(false);
     
-    auto stateIter = std::find_if(states_.begin(), states_.end(), MatchesStateName(stateName));
+    auto stateIter(states_.find(stateName));
     
     if (stateIter != states_.end())
     {
