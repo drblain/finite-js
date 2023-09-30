@@ -1,9 +1,9 @@
 // test includes
 #include <gtest/gtest.h>
 
-#include "NonDeterministicAutomaton.h"
+#include "NonDeterministicAutomaton.hpp"
 
-#include "NonDeterministicAutomatonTest.h"
+#include "NonDeterministicAutomatonTest.hpp"
 
 void NonDeterministicAutomatonTest::SetUp()
 {

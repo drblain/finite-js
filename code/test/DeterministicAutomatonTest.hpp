@@ -1,5 +1,5 @@
-#ifndef DETERMINISTIC_AUTOMATON_TEST_H
-#define DETERMINISTIC_AUTOMATON_TEST_H
+#ifndef DETERMINISTIC_AUTOMATON_TEST_HPP
+#define DETERMINISTIC_AUTOMATON_TEST_HPP
 
 #include <gtest/gtest.h>
 
@@ -19,4 +19,4 @@ protected:
 
 }; // class DeterministicAutomatonTest
 
-#endif // DETERMINISTIC_AUTOMATON_TEST_H
+#endif // DETERMINISTIC_AUTOMATON_TEST_HPP

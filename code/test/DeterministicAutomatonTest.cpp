@@ -1,9 +1,9 @@
 // test includes
 #include <gtest/gtest.h>
 
-#include "DeterministicAutomaton.h"
+#include "DeterministicAutomaton.hpp"
 
-#include "DeterministicAutomatonTest.h"
+#include "DeterministicAutomatonTest.hpp"
 
 void DeterministicAutomatonTest::SetUp()
 {

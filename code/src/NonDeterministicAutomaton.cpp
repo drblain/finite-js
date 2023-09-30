@@ -1,27 +1,7 @@
-#include "NonDeterministicAutomaton.h"
+// Local includes
+#include "NonDeterministicState.hpp"
 
-// ***************************************************
-//
-//  class NonDeterministicState
-//
-// ***************************************************
-Finite::NonDeterministicState::NonDeterministicState(const std::string& stateName,
-                                                     bool isStart,
-                                                     bool isAccept):
-State(stateName, isStart, isAccept)
-{
-}
-
-Finite::NonDeterministicState::~NonDeterministicState()
-{
-}
-
-bool Finite::NonDeterministicState::addTransition(const State * destState,
-                                                  char symbol)
-{
-    // TODO
-    return false;
-}
+#include "NonDeterministicAutomaton.hpp"
 
 
 // ***************************************************
@@ -33,41 +13,41 @@ Finite::NonDeterministicAutomaton::NonDeterministicAutomaton()
 {
 }
 
-Finite::NonDeterministicAutomaton::~NonDeterministicAutomaton()
+/* virtual */ Finite::NonDeterministicAutomaton::~NonDeterministicAutomaton()
 {
 }
 
-bool Finite::NonDeterministicAutomaton::accepts(const std::string& inputString) const
-{
-    // TODO
-    return false;
-}
-
-bool Finite::NonDeterministicAutomaton::addState(const std::string& stateName,
-                                                 bool isStart,
-                                                 bool isAccept)
+/* virtual */ bool Finite::NonDeterministicAutomaton::accepts(const std::string& inputString) const
 {
     // TODO
     return false;
 }
 
-bool Finite::NonDeterministicAutomaton::removeState(const std::string& stateName)
+/* virtual */ bool Finite::NonDeterministicAutomaton::addState(const std::string& stateName,
+                                                               bool isStart,
+                                                               bool isAccept)
 {
     // TODO
     return false;
 }
 
-bool Finite::NonDeterministicAutomaton::addTransition(const std::string& initStateName,
-                                                      const std::string& destStateName,
-                                                      char symbol)
+/* virtual */ bool Finite::NonDeterministicAutomaton::removeState(const std::string& stateName)
 {
     // TODO
     return false;
 }
 
-bool Finite::NonDeterministicAutomaton::removeTransition(const std::string& initStateName,
-                                                         const std::string& destStateName,
-                                                         char symbol)
+/* virtual */ bool Finite::NonDeterministicAutomaton::addTransition(const std::string& initStateName,
+                                                                    const std::string& destStateName,
+                                                                    char symbol)
+{
+    // TODO
+    return false;
+}
+
+/* virtual */ bool Finite::NonDeterministicAutomaton::removeTransition(const std::string& initStateName,
+                                                                       const std::string& destStateName,
+                                                                       char symbol)
 {
     // TODO
     return false;

@@ -1,38 +1,11 @@
 // STL includes
 #include <algorithm>
 
+// Local includes
+#include "DeterministicState.hpp"
+
 // Header
-#include "DeterministicAutomaton.h"
-
-// ***************************************************
-//
-//  class DeterministicState
-//
-// ***************************************************
-Finite::DeterministicState::DeterministicState(const std::string& stateName,
-                                               bool isStart,
-                                               bool isAccept):
-State(stateName, isStart, isAccept)
-{
-}
-
-Finite::DeterministicState::~DeterministicState()
-{
-}
-
-bool Finite::DeterministicState::addTransition(const State * destState,
-                                               char symbol)
-{
-    // since this state is deterministic, we can only have one transition per symbol
-    bool transitionAdded(false);
-
-    if (transitions_.find(symbol) == transitions_.end())
-    {
-        transitions_[symbol] = destState;
-    }
-
-    return transitionAdded;
-}
+#include "DeterministicAutomaton.hpp"
 
 
 // ***************************************************
@@ -45,21 +18,21 @@ Finite::DeterministicAutomaton::DeterministicAutomaton()
 {
 }
 
-Finite::DeterministicAutomaton::~DeterministicAutomaton()
+/* virtual */ Finite::DeterministicAutomaton::~DeterministicAutomaton()
 {
 }
 
 // accepts
-bool Finite::DeterministicAutomaton::accepts(const std::string& inputString) const
+/* virtual */ bool Finite::DeterministicAutomaton::accepts(const std::string& inputString) const
 {
     // TODO : implement major algorithm
     return false;
 }
 
 // addState
-bool Finite::DeterministicAutomaton::addState(const std::string& stateName,
-                                              bool isStart,
-                                              bool isAccept)
+/* virtual */ bool Finite::DeterministicAutomaton::addState(const std::string& stateName,
+                                                            bool isStart,
+                                                            bool isAccept)
 {
     bool stateAdded(false);
     
@@ -85,7 +58,7 @@ bool Finite::DeterministicAutomaton::addState(const std::string& stateName,
     return stateAdded;
 }
 
-bool Finite::DeterministicAutomaton::removeState(const std::string& stateName)
+/* virtual */ bool Finite::DeterministicAutomaton::removeState(const std::string& stateName)
 {
     bool stateRemoved(false);
     
@@ -105,9 +78,9 @@ bool Finite::DeterministicAutomaton::removeState(const std::string& stateName)
     return stateRemoved;
 }
 
-bool Finite::DeterministicAutomaton::addTransition(const std::string& initStateName,
-                                                   const std::string& destStateName,
-                                                   char symbol)
+/* virtual */ bool Finite::DeterministicAutomaton::addTransition(const std::string& initStateName,
+                                                                 const std::string& destStateName,
+                                                                 char symbol)
 {
     bool transitionAdded(false);
     
@@ -126,9 +99,9 @@ bool Finite::DeterministicAutomaton::addTransition(const std::string& initStateN
     return transitionAdded;
 }
 
-bool Finite::DeterministicAutomaton::removeTransition(const std::string& initStateName,
-                                                      const std::string& destStateName,
-                                                      char symbol)
+/* virtual */ bool Finite::DeterministicAutomaton::removeTransition(const std::string& initStateName,
+                                                                    const std::string& destStateName,
+                                                                    char symbol)
 {
     // TODO : implement
     // we shouldn't have to use the destStateName here since this is deterministic

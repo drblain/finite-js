@@ -1,54 +1,7 @@
 // STL includes
 #include <algorithm>
 
-#include "Automaton.h"
-
-// ***************************************************
-//
-//  class State
-//
-// ***************************************************
-
-Finite::State::State(const std::string & stateName, bool isStart, bool isAccept):
-    stateName_(stateName),
-    isStart_(isStart),
-    isAccept_(isAccept)
-{
-}
-
-Finite::State::~State()
-{
-}
-
-const std::string& Finite::State::getName() const
-{
-    return stateName_;
-}
-
-bool Finite::State::isStart() const
-{
-    return isStart_;
-}
-
-bool Finite::State::isAccept() const
-{
-    return isAccept_;
-}
-
-
-// ***************************************************
-//
-//  class Automaton
-//
-// ***************************************************
-Finite::IsStartState::IsStartState()
-{
-}
-
-bool Finite::IsStartState::operator () (const StatePair& inputStateElement) const
-{
-    return inputStateElement.second->isStart();
-}
+#include "Automaton.hpp"
 
 
 // ***************************************************
@@ -57,7 +10,7 @@ bool Finite::IsStartState::operator () (const StatePair& inputStateElement) cons
 //
 // ***************************************************
 
-Finite::Automaton::~Automaton()
+/* virtual */ Finite::Automaton::~Automaton()
 {
     std::for_each(
         states_.begin(),

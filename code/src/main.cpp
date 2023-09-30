@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "DeterministicAutomaton.h"
-#include "NonDeterministicAutomaton.h"
+#include "DeterministicAutomaton.hpp"
+#include "NonDeterministicAutomaton.hpp"
 
 int main(int argc, char* argv[])
 {
