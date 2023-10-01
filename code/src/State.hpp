@@ -26,6 +26,11 @@ namespace Finite
         virtual bool addTransition(const State * destState,
                                    char symbol) = 0;
 
+        /*
+        virtual bool removeTransition(const State * destState,
+                                      char symbol) = 0;
+        */
+
         virtual bool addIncidentState(const std::string& incidentStateName) = 0;
 
         inline const std::string& getName() const;
