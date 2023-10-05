@@ -23,15 +23,15 @@ namespace Finite
 
         virtual ~State();
 
-        virtual bool addTransition(const State * destState,
+        virtual bool addTransition(State * destState,
                                    char symbol) = 0;
 
-        /*
-        virtual bool removeTransition(const State * destState,
+        virtual bool removeTransition(State * destState,
                                       char symbol) = 0;
-        */
 
         virtual bool addIncidentState(const std::string& incidentStateName) = 0;
+
+        virtual bool removeIncidentState(const std::string& incidentStateName) = 0;
 
         inline const std::string& getName() const;
 

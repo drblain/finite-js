@@ -5,25 +5,43 @@
 //  class NonDeterministicState
 //
 // ***************************************************
-Finite::NonDeterministicState::NonDeterministicState(const std::string& stateName,
-                                                     bool isStart,
-                                                     bool isAccept):
+Finite::NonDeterministicState::NonDeterministicState(
+    const std::string& stateName,
+    bool isStart,
+    bool isAccept):
 State(stateName, isStart, isAccept)
 {
 }
 
-/* virtual */ Finite::NonDeterministicState::~NonDeterministicState()
+Finite::NonDeterministicState::~NonDeterministicState()
 {
 }
 
-/* virtual */ bool Finite::NonDeterministicState::addTransition(const State * destState,
-                                                                char symbol)
+bool Finite::NonDeterministicState::addTransition(
+    State * destState,
+    char symbol)
 {
     // TODO
     return false;
 }
 
-/* virtual */ bool Finite::NonDeterministicState::addIncidentState(const std::string& incidentStateName)
+bool Finite::NonDeterministicState::removeTransition(
+    State * destState,
+    char symbol)
+{
+    // TODO
+    return false;
+}
+
+bool Finite::NonDeterministicState::addIncidentState(
+    const std::string& incidentStateName)
+{
+    // TODO
+    return false;
+}
+
+bool Finite::NonDeterministicState::removeIncidentState(
+    const std::string& incidentStateName)
 {
     // TODO
     return false;

@@ -20,10 +20,15 @@ namespace Finite
 
         /* virtual */ ~NonDeterministicState();
         
-        /* virtual */ bool addTransition(const State * destState,
+        /* virtual */ bool addTransition(State * destState,
                                          char symbol);
 
+        /* virtual */ bool removeTransition(State * destState,
+                                            char symbol);
+
         /* virtual */ bool addIncidentState(const std::string& incidentStateName);
+
+        /* virtual */ bool removeIncidentState(const std::string& incidentStateName);
 
     }; // class NonDeterministicState
 

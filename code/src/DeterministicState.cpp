@@ -6,19 +6,21 @@
 //  class DeterministicState
 //
 // ***************************************************
-Finite::DeterministicState::DeterministicState(const std::string& stateName,
-                                               bool isStart,
-                                               bool isAccept):
+Finite::DeterministicState::DeterministicState(
+    const std::string& stateName,
+    bool isStart,
+    bool isAccept):
 State(stateName, isStart, isAccept)
 {
 }
 
-/* virtual */ Finite::DeterministicState::~DeterministicState()
+Finite::DeterministicState::~DeterministicState()
 {
 }
 
-/* virtual */ bool Finite::DeterministicState::addTransition(const State * destState,
-                                                             char symbol)
+bool Finite::DeterministicState::addTransition(
+    State * destState,
+    char symbol)
 {
     // since this state is deterministic, we can only have one transition per symbol
     bool transitionAdded(false);
@@ -31,7 +33,23 @@ State(stateName, isStart, isAccept)
     return transitionAdded;
 }
 
-/* virtual */ bool Finite::DeterministicState::addIncidentState(const std::string& incidentStateName)
+bool Finite::DeterministicState::removeTransition(
+    State * destState,
+    char symbol)
+{
+    // TODO
+    return false;
+}
+
+bool Finite::DeterministicState::addIncidentState(
+    const std::string& incidentStateName)
+{
+    // TODO
+    return false;
+}
+
+bool Finite::DeterministicState::removeIncidentState(
+    const std::string& incidentStateName)
 {
     // TODO
     return false;
